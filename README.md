@@ -1,180 +1,379 @@
-# 🚀 Agent Starter Pack
+# 🚨 TradeSage Ops
 
-![Version](https://img.shields.io/pypi/v/agent-starter-pack?color=blue) [![1-Minute Video Overview](https://img.shields.io/badge/1--Minute%20Overview-gray)](https://youtu.be/jHt-ZVD660g) [![Docs](https://img.shields.io/badge/Documentation-gray)](https://googlecloudplatform.github.io/agent-starter-pack/) <a href="https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fagent_starter_pack%2Fresources%2Fidx">
-  <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="https://cdn.firebasestudio.dev/btn/try_light_20.svg">
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="https://cdn.firebasestudio.dev/btn/try_dark_20.svg">
-    <img
-      height="20"
-      alt="Try in Firebase Studio"
-      src="https://cdn.firebasestudio.dev/btn/try_blue_20.svg">
-  </picture>
-</a> [![Launch in Cloud Shell](https://img.shields.io/badge/Launch-in_Cloud_Shell-white)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs) ![Stars](https://img.shields.io/github/stars/GoogleCloudPlatform/agent-starter-pack?color=yellow)
+> **AI-Powered Multi-Agent Incident Command Center for DevOps & SRE Teams**
 
-> ## ⚠️ Agent Starter Pack is in maintenance mode — switch to `agents-cli`
->
-> **Active development has moved to [`agents-cli`](https://github.com/google/agents-cli)**, the next evolution of Agent Starter Pack. ASP will continue to receive critical fixes only — **no new features, no new templates, no new deployment targets.** New projects should start with `agents-cli`; existing projects should migrate.
->
-> ```bash
-> uvx google-agents-cli setup
-> ```
->
-> **Migration takes minutes** — your agent code, tests, Terraform, and CI/CD carry over with no rewrites.
->
-> **What you gain:**
-> - 🛠️ **Unified CLI** in place of the Makefile — `run`, `deploy`, `eval run`, `eval compare`, `playground`, `lint`, and more
-> - 🧠 **Bundled coding-agent skills** that turn Claude Code, Gemini CLI, or Codex into an ADK expert
-> - 🔁 **End-to-end lifecycle tooling**: scaffold → eval → deploy → publish → observe
-> - ☁️ **First-class support** for Google Cloud's Agent Platform
->
-> **→ [Migration guide](https://google.github.io/agents-cli/reference/from-agent-starter-pack/)** &nbsp;•&nbsp; [Get started](https://google.github.io/agents-cli/) &nbsp;•&nbsp; [Docs](https://google.github.io/agents-cli/) &nbsp;•&nbsp; [GitHub](https://github.com/google/agents-cli) &nbsp;•&nbsp; [PyPI](https://pypi.org/project/google-agents-cli/)
+TradeSage Ops is an intelligent incident management platform that leverages multiple AI agents to assist DevOps and Site Reliability Engineering (SRE) teams in detecting, analyzing, and resolving production incidents faster. Instead of manually switching between dashboards, logs, metrics, and documentation, engineers receive a unified incident report containing the probable root cause, affected services, blast radius, incident timeline, and recommended recovery actions.
 
 ---
 
-A Python package that provides **production-ready templates** for GenAI agents on Google Cloud.
+# 📖 Problem Statement
 
-Focus on your agent logic—the starter pack provides everything else: infrastructure, CI/CD, observability, and security.
+Modern cloud-native applications generate thousands of alerts, logs, metrics, deployment events, and incident notifications every day. Existing observability platforms provide valuable data but require engineers to manually correlate information across multiple tools to identify the actual root cause.
 
-| ⚡️ Launch | 🧪 Experiment  | ✅ Deploy | 🛠️ Customize |
-|---|---|---|---|
-| [Pre-built agent templates](./agent_starter_pack/agents/) (ReAct, RAG, multi-agent, Live API). | [Vertex AI evaluation](https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview) and an interactive playground. | Production-ready infra with [monitoring, observability](https://googlecloudplatform.github.io/agent-starter-pack/guide/observability), and [CI/CD](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment) on [Cloud Run](https://cloud.google.com/run) or [Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview). | Extend and customize templates according to your needs. 🆕 Now integrating with [Gemini CLI](https://github.com/google-gemini/gemini-cli) |
+During critical incidents, engineers often spend significant time:
+
+* Investigating alerts
+* Searching logs
+* Checking infrastructure metrics
+* Reviewing deployments
+* Understanding service dependencies
+* Looking up runbooks
+
+This manual process increases **Mean Time to Detect (MTTD)** and **Mean Time to Resolve (MTTR)**, resulting in higher downtime, operational costs, and reduced customer trust.
+
+TradeSage Ops solves this problem by introducing an AI-powered Incident Commander that coordinates specialized AI agents to automatically investigate incidents and provide actionable recommendations.
 
 ---
 
-## ⚡ Get Started in 1 Minute
+# 🎯 Objectives
 
-**From zero to production-ready agent in 60 seconds using [`uv`](https://docs.astral.sh/uv/getting-started/installation/):**
+* Reduce incident investigation time
+* Minimize Mean Time to Resolve (MTTR)
+* Improve root cause identification
+* Provide intelligent remediation suggestions
+* Visualize service impact using dependency analysis
+* Generate a complete incident timeline automatically
 
-```bash
-uvx agent-starter-pack create
+---
+
+# ✨ Features
+
+## 🤖 AI Incident Commander
+
+Acts as the central coordinator responsible for managing all specialist agents and generating the final incident report.
+
+---
+
+## 📄 Log Analysis Agent
+
+* Parses application logs
+* Detects recurring errors
+* Identifies anomalies
+* Summarizes critical log events
+
+---
+
+## 📊 Metrics Analysis Agent
+
+Analyzes:
+
+* CPU Usage
+* Memory Usage
+* Error Rate
+* Request Latency
+* Throughput
+* Availability
+
+Detects abnormal infrastructure behavior.
+
+---
+
+## 🔗 Dependency Graph Agent
+
+Maps relationships between services to determine:
+
+* Upstream failures
+* Downstream impact
+* Cascading failures
+* Critical service dependencies
+
+---
+
+## 📚 Runbook Agent
+
+Searches operational documentation and generates:
+
+* Step-by-step recovery instructions
+* Troubleshooting workflow
+* Recommended remediation actions
+
+---
+
+## 📈 Blast Radius Analysis
+
+Automatically estimates:
+
+* Affected services
+* Business impact
+* Customer impact
+* Critical infrastructure at risk
+
+---
+
+## 🕒 Incident Timeline
+
+Creates a chronological story of the incident using:
+
+* Alerts
+* Deployments
+* Logs
+* Infrastructure events
+* Metrics
+
+---
+
+## 🧠 Root Cause Analysis
+
+Combines outputs from multiple agents to identify the most probable cause of the incident.
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                    User / SRE Engineer
+                             │
+                             ▼
+                  Incident Dashboard (React)
+                             │
+                             ▼
+                    Incident Commander Agent
+                             │
+      ┌──────────────┬──────────────┬──────────────┬──────────────┐
+      │              │              │              │
+      ▼              ▼              ▼              ▼
+ Log Agent     Metrics Agent  Dependency Agent  Runbook Agent
+      │              │              │              │
+      └──────────────┴──────────────┴──────────────┘
+                             │
+                             ▼
+                  Incident Summary Generator
+                             │
+                             ▼
+                 Root Cause + Timeline + Actions
 ```
 
-<details>
-<summary> ✨ Alternative: Using pip</summary>
+---
 
-If you don't have [`uv`](https://github.com/astral-sh/uv) installed, you can use pip:
-```bash
-# Create and activate a Python virtual environment
-python -m venv .venv && source .venv/bin/activate
+# 💡 Innovative Features
 
-# Install the agent starter pack
-pip install --upgrade agent-starter-pack
+### 1. Blast Radius Narration
 
-# Create a new agent project
-agent-starter-pack create
+Explains:
+
+* Which services are affected
+* Estimated user impact
+* Business consequences
+
+Example:
+
+> Database failure impacts the Payment Service, which affects Checkout. Users may experience payment failures while product browsing remains operational.
+
+---
+
+### 2. Runbook Synthesizer
+
+Instead of displaying multiple documents, the AI generates a concise remediation plan by combining information from various runbooks.
+
+---
+
+### 3. Incident Timeline Assembler
+
+Automatically reconstructs the sequence of events leading to an outage.
+
+Example:
+
+```text
+10:01 Deployment Started
+
+↓
+
+10:03 Error Rate Increased
+
+↓
+
+10:05 Database Latency Spike
+
+↓
+
+10:06 Payment Failures
+
+↓
+
+10:08 Customer Complaints
 ```
-</details>
 
-**That's it!** You now have a fully functional agent project—complete with backend, frontend, and deployment infrastructure—ready for you to explore and customize.
+---
 
-### 🔧 Enhance Existing Agents
+# 🛠️ Technology Stack
 
-Already have an agent? Add production-ready deployment and infrastructure by running this command in your project's root folder:
+## Frontend
 
-```bash
-uvx agent-starter-pack enhance
+* React
+* Tailwind CSS
+* Chart.js
+
+## Backend
+
+* FastAPI
+* Python
+
+## AI
+
+* Google Gemini
+* Google ADK (Agent Development Kit)
+
+## Cloud
+
+* Google Cloud Run
+* Cloud Logging
+* Cloud Monitoring
+
+## Data Sources
+
+* Mock Prometheus Metrics
+* Mock Application Logs
+* Webhook Alerts
+
+## Deployment
+
+* Docker
+* Cloud Run
+
+---
+
+# 📂 Project Structure
+
+```text
+TradeSage-Ops/
+
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── agents/
+│   │      ├── incident_commander.py
+│   │      ├── log_agent.py
+│   │      ├── metrics_agent.py
+│   │      ├── dependency_agent.py
+│   │      └── runbook_agent.py
+│   │
+│   ├── api/
+│   ├── services/
+│   ├── models/
+│   ├── utils/
+│   └── main.py
+│
+├── datasets/
+│
+├── docs/
+│
+├── docker/
+│
+├── README.md
+│
+└── requirements.txt
 ```
 
-See [Installation Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation) for more options, or try with zero setup in [Firebase Studio](https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fagent-starter-pack%2Ftree%2Fmain%2Fsrc%2Fresources%2Fidx) or [Cloud Shell](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Feliasecchig%2Fasp-open-in-cloud-shell&cloudshell_print=open-in-cs).
+---
+
+# 🔄 Workflow
+
+1. Monitoring systems generate alerts.
+2. TradeSage Ops receives the incident.
+3. Incident Commander activates specialist agents.
+4. Each agent investigates its assigned domain.
+5. Findings are merged into a unified incident report.
+6. Gemini ranks possible root causes.
+7. Recovery recommendations are generated.
+8. Engineers review the report and execute remediation.
 
 ---
 
-## 🤖 Agents
+# 📊 Sample Incident Report
 
-| Agent Name                  | Description                                                                                                                       |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| `adk`      | A base ReAct agent implemented using Google's [Agent Development Kit](https://github.com/google/adk-python) |
-| `adk_a2a`  | An ADK agent with [Agent2Agent (A2A) Protocol](https://a2a-protocol.org/) support for distributed agent communication and interoperability |
-| `agentic_rag` | A RAG agent for document retrieval and Q&A. Supporting [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) and [Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview).       |
-| `langgraph`      | A base ReAct agent implemented using LangChain's [LangGraph](https://github.com/langchain-ai/langgraph) |
-| `adk_java`   | A base ReAct agent implemented using Google's [Agent Development Kit for Java](https://github.com/google/adk-java) |
-| `adk_live`       | A real-time multimodal RAG agent powered by Gemini, supporting audio/video/text chat     |
+```text
+Incident ID:
+INC-1024
 
-**More agents are on the way!** We are continuously expanding our [agent library](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview). Have a specific agent type in mind? [Raise an issue as a feature request!](https://github.com/GoogleCloudPlatform/agent-starter-pack/issues/new?labels=enhancement)
+Severity:
+Critical
 
-**🔍 ADK Samples**
+Probable Root Cause:
+Database Connection Pool Exhausted
 
-Looking to explore more ADK examples? Check out the [ADK Samples Repository](https://github.com/google/adk-samples) for additional examples and use cases demonstrating ADK's capabilities.
+Confidence:
+92%
 
----
+Affected Services:
+• Payment Service
+• Checkout Service
+• Order Service
 
-## 🌟 Community Showcase
+Blast Radius:
+42% of active users affected
 
-Explore amazing projects built with the Agent Starter Pack! 
+Timeline:
+10:01 Deployment
+10:03 CPU Spike
+10:05 Database Latency
+10:06 Payment Failures
 
-**[View Community Showcase →](https://googlecloudplatform.github.io/agent-starter-pack/guide/community-showcase)**
-
-## Key Features
-
-The `agent-starter-pack` offers key features to accelerate and simplify the development of your agent:
-- **🔄 [CI/CD Automation](https://googlecloudplatform.github.io/agent-starter-pack/cli/setup_cicd)** - A single command to set up a complete CI/CD pipeline for all environments, supporting both **Google Cloud Build** and **GitHub Actions**.
-- **📥 [Data Pipeline for RAG with Terraform/CI-CD](https://googlecloudplatform.github.io/agent-starter-pack/guide/data-ingestion)** - Seamlessly integrate a data pipeline to process embeddings for RAG into your agent system. Supporting [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction) and [Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview).
-- **[Remote Templates](https://googlecloudplatform.github.io/agent-starter-pack/remote-templates/)**: Create and share your own agent starter packs templates from any Git repository.
-- **🤖 Gemini CLI Integration** - Use the [Gemini CLI](https://github.com/google-gemini/gemini-cli) and the included `GEMINI.md` context file to ask questions about your template, agent architecture, and the path to production. Get instant guidance and code examples directly in your terminal.
-
-## High-Level Architecture
-
-This starter pack covers all aspects of Agent development, from prototyping and evaluation to deployment and monitoring.
-
-![High Level Architecture](docs/images/asp_high_level_architecture.png "Architecture")
+Recommended Actions:
+1. Roll back latest deployment
+2. Restart Payment Service
+3. Increase DB connection pool
+4. Monitor latency for 15 minutes
+```
 
 ---
 
-## 🔧 Requirements
+# 🚀 Future Enhancements
 
-- Python 3.10+
-- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
-- [Terraform](https://developer.hashicorp.com/terraform/downloads) (for deployment)
-- [Make](https://www.gnu.org/software/make/) (for development tasks)
+* Slack Integration
+* Microsoft Teams Notifications
+* Jira Ticket Creation
+* Kubernetes Live Monitoring
+* Prometheus Integration
+* Grafana Integration
+* OpenTelemetry Support
+* Predictive Incident Detection
+* AI-powered Postmortem Generation
+* Multi-Cloud Support (AWS, Azure, GCP)
 
+---
 
-## 📚 Documentation
+# 📈 Expected Impact
 
-Visit our [documentation site](https://googlecloudplatform.github.io/agent-starter-pack/) for comprehensive guides and references!
+TradeSage Ops helps organizations:
 
-🔍 **New to the codebase?** Explore the [CodeWiki](https://codewiki.google/github.com/googlecloudplatform/agent-starter-pack) for AI-powered code understanding and navigation.
+* Reduce Mean Time to Detect (MTTD)
+* Reduce Mean Time to Resolve (MTTR)
+* Improve incident response quality
+* Minimize production downtime
+* Increase operational efficiency
+* Assist small DevOps teams with AI-driven incident management
 
-- [Getting Started Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/getting-started) - First steps with agent-starter-pack
-- [Installation Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/installation) - Setting up your environment
-- [Deployment Guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment) - Taking your agent to production
-- [Agent Templates Overview](https://googlecloudplatform.github.io/agent-starter-pack/agents/overview) - Explore available agent patterns
-- [CLI Reference](https://googlecloudplatform.github.io/agent-starter-pack/cli/) - Command-line tool documentation
+---
 
+# 👥 Target Users
 
-### Video Walkthrough:
+* DevOps Engineers
+* Site Reliability Engineers (SREs)
+* Platform Engineering Teams
+* Startup CTOs
+* Cloud Operations Teams
+* Managed Service Providers
 
-- **[From Demo to Production with Agent Starter Pack](https://www.youtube.com/watch?v=mtJMYgJkTt8)**: Learn how the Agent Starter Pack acts as an Automated Architect, building the professional infrastructure for your AI project in seconds. Covers why most AI projects fail at deployment and how ASP automates Terraform, CI/CD, and observability.
+---
 
-- **[6-minute introduction](https://www.youtube.com/live/eZ-8UQ_t4YM?feature=shared&t=2791)** (April 2025): Explaining the Agent Starter Pack and demonstrating its key features. Part of the Kaggle GenAI intensive course.
+# 📌 Why TradeSage Ops?
 
-Looking for more examples and resources for Generative AI on Google Cloud? Check out the [GoogleCloudPlatform/generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) repository for notebooks, code samples, and more!
+Traditional observability tools provide visibility into system health but stop short of recommending actions. TradeSage Ops bridges this gap by combining multi-agent AI reasoning, infrastructure observability, and operational knowledge into a single intelligent incident command center that helps engineers resolve incidents faster and more confidently.
 
-## Contributing
+---
 
-Contributions are welcome! See the [Contributing Guide](CONTRIBUTING.md).
+# 📄 License
 
-## Feedback
+This project is developed for educational, research, and hackathon purposes. It can be extended for enterprise-grade incident management and cloud operations.
 
-We value your input! Your feedback helps us improve this starter pack and make it more useful for the community.
+---
 
-### Getting Help
+# 👨‍💻 Team
 
-If you encounter any issues or have specific suggestions, please first consider [raising an issue](https://github.com/GoogleCloudPlatform/generative-ai/issues) on our GitHub repository.
+**TradeSage Ops**
 
-### Share Your Experience
-
-For other types of feedback, or if you'd like to share a positive experience or success story using this starter pack, we'd love to hear from you! You can reach out to us at <a href="mailto:agent-starter-pack@google.com">agent-starter-pack@google.com</a>.
-
-Thank you for your contributions!
-
-## Disclaimer
-
-This repository is for demonstrative purposes only and is not an officially supported Google product.
-
-## Terms of Service
-
-The agent-starter-pack templating CLI and the templates in this starter pack leverage Google Cloud APIs. When you use this starter pack, you'll be deploying resources in your own Google Cloud project and will be responsible for those resources. Please review the [Google Cloud Service Terms](https://cloud.google.com/terms/service-terms) for details on the terms of service associated with these APIs.
+AI-Powered Incident Command Center for Modern Cloud Infrastructure.
