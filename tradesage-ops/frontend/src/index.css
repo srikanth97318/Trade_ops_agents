@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-white/5; }
+  body { @apply bg-bg text-gray-100; }
+}
+
+@layer components {
+  .glass {
+    @apply bg-bg-card/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  .glass-hover {
+    @apply glass transition-all duration-300 hover:border-accent-blue/30 hover:shadow-accent-blue/10;
+  }
+  .badge-critical {
+    @apply bg-accent-red/15 text-accent-red border border-accent-red/25 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+  .badge-warning {
+    @apply bg-accent-amber/15 text-accent-amber border border-accent-amber/25 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+  .badge-success {
+    @apply bg-accent-green/15 text-accent-green border border-accent-green/25 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+  .section-title {
+    @apply text-lg font-semibold flex items-center gap-2.5 mb-4;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

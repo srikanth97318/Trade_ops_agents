@@ -1,0 +1,35 @@
+steps:
+  # Step 1: Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/tradesage-ops:$COMMIT_SHA', '.']
+
+  # Step 2: Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/tradesage-ops:$COMMIT_SHA']
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '$_SERVICE_NAME'
+      - '--image=$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/tradesage-ops:$COMMIT_SHA'
+      - '--region=$_REGION'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars=PROJECT_ID=$PROJECT_ID'
+      # To connect Gemini API key from Secret Manager, uncomment the line below:
+      # - '--set-secrets=GEMINI_API_KEY=GEMINI_API_KEY:latest'
+
+images:
+  - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/tradesage-ops:$COMMIT_SHA'
+
+substitutions:
+  _AR_HOSTNAME: 'us-central1-docker.pkg.dev'
+  _AR_REPO: 'tradesage-repo'
+  _SERVICE_NAME: 'tradesage-ops'
+  _REGION: 'us-central1'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
